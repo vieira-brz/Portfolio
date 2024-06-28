@@ -2,28 +2,23 @@ import emailjs from "@emailjs/browser";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useRef, useState } from "react";
 
-import { Fox } from "../models";
 import useAlert from "../hooks/useAlert";
 import { Alert, Loader } from "../components";
+import Bunny from "../models/Bunny"; // Ajuste o caminho conforme necessário
 
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const { alert, showAlert, hideAlert } = useAlert();
   const [loading, setLoading] = useState(false);
-  const [currentAnimation, setCurrentAnimation] = useState("idle");
 
   const handleChange = ({ target: { name, value } }) => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleFocus = () => setCurrentAnimation("walk");
-  const handleBlur = () => setCurrentAnimation("idle");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    setCurrentAnimation("hit");
 
     emailjs
       .send(
@@ -49,18 +44,16 @@ const Contact = () => {
 
           setTimeout(() => {
             hideAlert(false);
-            setCurrentAnimation("idle");
             setForm({
               name: "",
               email: "",
               message: "",
             });
-          }, [3000]);
+          }, 3000);
         },
         (error) => {
           setLoading(false);
           console.error(error);
-          setCurrentAnimation("idle");
 
           showAlert({
             show: true,
@@ -76,7 +69,7 @@ const Contact = () => {
       {alert.show && <Alert {...alert} />}
 
       <div className='flex-1 min-w-[50%] flex flex-col'>
-        <h1 className='head-text'>Entrar em contato</h1>
+        <h1 className='head-text -mb-2'>Entrar em contato</h1>
 
         <form
           ref={formRef}
@@ -93,8 +86,6 @@ const Contact = () => {
               required
               value={form.name}
               onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
             />
           </label>
           <label className='text-black-500 font-semibold'>
@@ -107,8 +98,6 @@ const Contact = () => {
               required
               value={form.email}
               onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
             />
           </label>
           <label className='text-black-500 font-semibold'>
@@ -120,8 +109,6 @@ const Contact = () => {
               placeholder='Escreva aqui sua opinião...'
               value={form.message}
               onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
             />
           </label>
 
@@ -129,20 +116,20 @@ const Contact = () => {
             type='submit'
             disabled={loading}
             className='btn'
-            onFocus={handleFocus}
-            onBlur={handleBlur}
           >
             {loading ? "Enviando..." : "Enviar"}
           </button>
+
+          <small className="text-xs text-gray-500 -mt-2 text-center">Certifique-se de ter preenchido com suas informações!</small>
         </form>
       </div>
 
-      <div className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]'>
+      <div className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px] py-16 -mb-36 lg:-mb-32 lg:ml-20'>
         <Canvas
           camera={{
-            position: [0, 0, 5],
-            fov: 75,
-            near: 0.1,
+            position: [5, 0, 0],
+            fov: 1,
+            near: 1,
             far: 1000,
           }}
         >
@@ -157,12 +144,7 @@ const Contact = () => {
           />
 
           <Suspense fallback={<Loader />}>
-            <Fox
-              currentAnimation={currentAnimation}
-              position={[0.5, 0.35, 0]}
-              rotation={[12.629, -0.6, 0]}
-              scale={[0.5, 0.5, 0.5]}
-            />
+            <Bunny />
           </Suspense>
         </Canvas>
       </div>
