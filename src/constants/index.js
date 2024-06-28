@@ -1,6 +1,6 @@
 import { toroid, solutiva } from "../assets/images";
 import {
-    contact, github, linkedin, streamlit, 
+    alura, contact, dnc, github, linkedin, streamlit, lean,
     html, css, javascript, python, sql,
     jquery, react, vuejs, svelte, npm, sass, numpy, sklearn,
     mysql, mongodb, nodejs, json,
@@ -247,4 +247,35 @@ export const projects = [
         description: 'Web Analysis é uma plataforma que utiliza algoritmos de machine learning para análise detalhada de websites e aplicações web, melhorando performance e eficácia.',
         link: 'https://webanalysis.streamlit.app/',
     }
+];
+
+export const certificates = [
+    {
+        iconUrl: lean,
+        theme: 'btn-back-green',
+        name: 'Lean Six Sigma',
+        description: 'Certificação em Lean Six Sigma, abrangendo metodologias de melhoria de processos e eliminação de desperdícios.',
+        link: 'https://github.com/vieira-brz/Certificados/tree/master/Lean%20Six%20Sigma',
+    },
+    {
+        iconUrl: dnc,
+        theme: 'btn-back-blue',
+        name: 'Cientista de Dados DNC',
+        description: 'Certificação em Cientista de Dados pela DNC, com foco em análise de dados, aprendizado de máquina e visualização de dados.',
+        link: 'https://github.com/vieira-brz/Certificados/tree/master/DNC/Forma%C3%A7%C3%A3o%20em%20Dados',
+    },
+    {
+        iconUrl: alura,
+        theme: 'btn-back-pink',
+        name: 'Formações Alura',
+        description: 'Certificação em diversos cursos e formações pela Alura, cobrindo áreas como desenvolvimento de software, design e gestão de projetos.',
+        link: 'https://cursos.alura.com.br/user/vinivieira0509/fullCertificate/36ab9fe564f710e20082254bff4cb982',
+    },
+    {
+        iconUrl: github,
+        theme: 'btn-back-black',
+        name: 'Outros Certificados',
+        description: 'Certificações adicionais em várias áreas, incluindo programação, gestão, segurança de sistemas e desenvolvimento pessoal.',
+        link: 'https://github.com/vieira-brz/Certificados',
+    },
 ];
