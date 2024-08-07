@@ -1,8 +1,8 @@
-import Home from "./Home";
 import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
+import Hobbies from "./Hobbies";
 
 export {
-    Home, About, Projects, Contact
+    Hobbies, About, Projects, Contact
 }

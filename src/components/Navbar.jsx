@@ -17,6 +17,9 @@ const Navbar = () => {
                 <NavLink to='/certificates' className={({ isActive }) => isActive ? "text-blue-600" : "text-black"}>
                     Certificados
                 </NavLink>
+                <NavLink to='/hobbies' className={({ isActive }) => isActive ? "text-blue-600" : "text-black"}>
+                    Hobbies
+                </NavLink>
             </nav>
         </header>
     );
